@@ -39,6 +39,7 @@ class UserAgentMiddleware(SelectedBackend):
         if (
             not request_should_be_ignored(request) and
             getattr(settings, "SEO_JS_ENABLED", not settings.DEBUG) and
+            getattr(settings, "SEO_JS_REALTIME_ENABLED", not settings.DEBUG) and
             "HTTP_USER_AGENT" in request.META and
             self.USER_AGENT_REGEX.match(request.META["HTTP_USER_AGENT"])
         ):
